@@ -30,18 +30,18 @@ services:
       - JOB_WORKER_URL=redis://redis:6379/0
       - RAILS_ENV=development
 
-  # website:
-  #   depends_on:
-  #     - 'postgres'
-  #     - 'sidekiq'
-  #   build: .
-  #   command: rails server -b 0.0.0.0 -p 3000
-  #   ports:
-  #     - '3000:3000'
-  #   volumes:
-  #     - '.:/app'
-  #   env_file:
-  #     - '.env'
+  web:
+    depends_on:
+      - 'postgres'
+      - 'sidekiq'
+    build: .
+    command: rails server -b 0.0.0.0 -p 3000
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/app'
+    env_file:
+      - '.env'
 
 volumes:
   redis:
