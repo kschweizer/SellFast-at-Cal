@@ -1,8 +1,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: postgres
-  #host: localhost
+  # host: postgres
+  host: localhost
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -18,7 +18,9 @@ development:
   database: sellfast_development
 
 test:
-  <<: *default
+  adapter: sqlite3
+  # pool: <%= ENV.fetch("RAILS
+  timeout: 5000
   database: sellfast_test
 
 production:
